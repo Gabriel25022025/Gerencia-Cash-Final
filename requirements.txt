@@ -1,0 +1,6 @@
+# requirements.txt
+flask
+twilio
+openai
+requests
+APScheduler

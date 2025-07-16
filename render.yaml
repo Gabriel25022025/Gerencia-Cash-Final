@@ -1,0 +1,24 @@
+# render.yaml
+services:
+  - type: web
+    name: gerenciacash # Nome do serviço
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn bot:app"
+    healthCheckPath: / # Adiciona uma verificação de saúde básica
+    disks:
+      - name: data
+        mountPath: /var/data
+        sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_NUMBER
+        sync: false
