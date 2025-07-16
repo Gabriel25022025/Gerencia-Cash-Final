@@ -1,18 +1,19 @@
 # config.py
 import os
+from dotenv import load_dotenv
 
-# O código lê as credenciais de "Variáveis de Ambiente" seguras no servidor.
+# Esta linha carrega as variáveis do arquivo .env para o ambiente
+load_dotenv()
+
+# O código agora lê as credenciais do .env (localmente) ou das Environment Variables (no servidor)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
-TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER", "whatsapp:+14155238886")
+TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")
 
-# Caminho completo para o banco de dados no "Disco Persistente" do Render.
-DATABASE_NAME = "/var/data/database.db"
-
-
-# Banco de dados
-DATABASE_NAME = "database.db"
+# O caminho do banco de dados (ajuste com seu nome de usuário para o deploy)
+# Para rodar localmente, ele simplesmente criará o DB na pasta atual.
+DATABASE_NAME = f"/home/GabrielRoa/Gerencia-Cash-Final/database.db"
 
 # Links para a Área de Membros de cada plano
 LINKS_AREA_DE_MEMBROS = {
